@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suivi Financier Familial</title>
+    
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- SheetJS pour lire le fichier Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- En-tête avec image de famille -->
+    <header>
+        <div class="header-content">
+            <img src="https://img.icons8.com/fluency/96/family.png" alt="Famille" class="family-icon" />
+            <h1><i class="fas fa-piggy-bank"></i> Suivi Financier de la Famille</h1>
+            <p><i class="fas fa-calendar-alt"></i> Gérez vos entrées et dépenses en toute simplicité</p>
+        </div>
+    </header>
+
+    <!-- Résumé des finances -->
+    <section class="summary">
+        <div class="summary-card">
+            <i class="fas fa-wallet"></i>
+            <h3>Solde Total</h3>
+            <p id="totalBalance">0 €</p>
+        </div>
+        <div class="summary-card income">
+            <i class="fas fa-arrow-up"></i>
+            <h3>Total Entrées</h3>
+            <p id="totalIncome">0 €</p>
+        </div>
+        <div class="summary-card expense">
+            <i class="fas fa-arrow-down"></i>
+            <h3>Total Sorties</h3>
+            <p id="totalExpense">0 €</p>
+        </div>
+        <div class="summary-card count">
+            <i class="fas fa-list"></i>
+            <h3>Nombre d'opérations</h3>
+            <p id="totalCount">0</p>
+        </div>
+    </section>
+
+    <!-- Filtres -->
+    <section class="filters">
+        <div class="filter-group">
+            <label><i class="fas fa-search"></i> Recherche :</label>
+            <input type="text" id="searchInput" placeholder="Rechercher une désignation..." />
+        </div>
+        <div class="filter-group">
+            <label><i class="fas fa-calendar"></i> Période :</label>
+            <input type="date" id="dateFrom" />
+            <span>à</span>
+            <input type="date" id="dateTo" />
+        </div>
+        <button id="resetFilters"><i class="fas fa-undo"></i> Réinitialiser</button>
+    </section>
+
+    <!-- Conteneur du tableau -->
+    <section class="table-container">
+        <div id="loadingMessage" class="loading">
+            <i class="fas fa-spinner fa-spin"></i> Chargement des données...
+        </div>
+        <table id="financeTable">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-calendar-day"></i> Date</th>
+                    <th><i class="fas fa-tag"></i> Désignation</th>
+                    <th><i class="fas fa-arrow-up" style="color:#22c55e;"></i> Entrées</th>
+                    <th><i class="fas fa-arrow-down" style="color:#ef4444;"></i> Sorties</th>
+                    <th><i class="fas fa-scale-balanced"></i> Solde</th>
+                    <th><i class="fas fa-pen"></i> Observations</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Les données seront insérées ici par JavaScript -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <p><i class="fas fa-code"></i> Développé avec <i class="fas fa-heart" style="color:#ef4444;"></i> pour la famille</p>
+        <p><i class="fas fa-sync"></i> Dernière mise à jour : <span id="lastUpdate"></span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
